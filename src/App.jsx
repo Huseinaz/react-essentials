@@ -6,7 +6,7 @@ import TabButton from './components/TabButton.jsx';
 import { EXAMPLES } from './data.js';
 
 function App() {
-  const [ selectedTopic, setSelectedTopic ] = useState("components");
+  const [ selectedTopic, setSelectedTopic ] = useState();
 
   function handleSelect(selectedButton) {
     // selectedButton = 'components', 'jsx', 'props', 'state'
@@ -35,7 +35,11 @@ function App() {
           <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
           <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
         </menu>
-        <div id="tab-content">
+        {/* if selectedTopic == undefined print "Please select a topic", else print nothing */}
+        {!selectedTopic ? <p>Please select a topic.</p> : null} {/* we can replace the "null" with the second if statment , or replace ? with && and remove the "null" */}
+        {/* if selectedTopic != undefined print the content, else print nothing */}
+        {selectedTopic ? (
+          <div id="tab-content">
           <h3>{EXAMPLES[selectedTopic].title}</h3>
           <p>{EXAMPLES[selectedTopic].description}</p>
           <pre>
@@ -44,6 +48,7 @@ function App() {
             </code>
           </pre>
         </div>
+        ) : null}
       </section>
       </main>
     </div>
