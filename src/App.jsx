@@ -30,8 +30,8 @@ function App() {
     );
   }
 
-  return (
-    <div>
+  return ( //<Fragment></Fragment> or <></> instead of div
+    <>
       <Header />
       <main>
       <section id="core-concepts">
@@ -51,7 +51,7 @@ function App() {
         {tabContent}
       </section>
       </main>
-    </div>
+    </>
   );
 }
 
